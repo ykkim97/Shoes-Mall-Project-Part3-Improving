@@ -1,0 +1,107 @@
+.shoppingBasketDiv {
+    width: 100%;
+}
+.shoppingBasket {
+    margin: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.basketTable {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.basketTableHead {
+    background: rgb(75, 74, 74);
+    color: white;
+}
+
+.basketTableHead th{
+    text-align: center;
+}
+
+.basketTableBody {
+    text-align: center;
+}
+
+.quanChangeBtn button {
+    width: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quanChangeBtn button:nth-child(1) {
+    background: rgb(151, 206, 151);
+}
+.quanChangeBtn button:nth-child(2) {
+    background: rgb(214, 185, 89);
+}
+.quanChangeBtn button:nth-child(3) {
+    background: rgb(221, 98, 61);
+}
+
+
+.shoppingBasketAlert {
+    text-align: center;
+    background: rgb(236, 234, 122);
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 30px;
+}
+
+.shoppingBasketAlert p {
+    font-size: 25px;
+}
+
+.shoppingBasketAlert button {
+    background: white;
+    border-radius: 5px;
+    border: 1px solid black
+}
+
+.shoppingBasketAlert button:hover {
+    background-color: rgb(211, 71, 28);
+    color: white;
+}
+
+.totalAmount {
+    width: 100%;
+    max-width: 1000px;
+    height: 100px;
+    margin: auto;
+    padding-top: 30px;
+    background: rgb(75, 74, 74);
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+
+.payment {
+    margin: 30px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.payment button {
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.goPaymentBtn{
+    background-color: #212529;
+}
+
+.goBackBtn {
+    background-color: #212529;
+}

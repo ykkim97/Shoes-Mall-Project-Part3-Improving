@@ -1,0 +1,58 @@
+.customBtn {
+    width: 155px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+
+.popular-item {
+    /* text-align: center; */
+    /* margin-left: 30px; */
+    padding: 20px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.popular-title {
+    text-align: center;
+    padding: 20px;
+}
+
+.popular-item .container {
+    margin-top: 20px;
+    
+}
+
+.populars {
+    text-align: center;
+}
+
+.another-item {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.anotherClickButton {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgb(7, 104, 214) 0%, rgb(103, 149, 202)100%);
+    border: none;
+}
+
+.anotherClickButton:hover {
+    background: rgb(82, 16, 52);
+    background: linear-gradient(0deg, rgb(47, 127, 218) 0%, rgb(72, 182, 245) 100%);
+}
+
+

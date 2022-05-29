@@ -1,0 +1,27 @@
+.detailtab-div {
+    margin: auto;
+}
+
+.detailtab-title {
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+.table-frame {
+    width: 100%;
+    border: 1px solid rgb(160, 157, 157);
+    height: 300px;
+}
+
+.table-frame tr {
+    border: 1px solid rgb(160, 157, 157);
+}
+
+.table-frame td { 
+    border: 1px solid rgb(160, 157, 157);
+    padding-left: 20px;
+}
+
+.itemKey {
+    background: rgb(236, 233, 233);
+}

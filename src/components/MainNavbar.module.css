@@ -1,0 +1,8 @@
+.NavbarDiv {
+    background: linear-gradient(to left, #212529, rgb(66, 64, 64),#212529);
+}
+
+.brand {
+    font-weight: bold;
+    font-size: 25px;
+}

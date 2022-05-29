@@ -1,0 +1,39 @@
+.detailInfoTitle {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#detailInfo {
+    text-align: center;
+}
+
+#detailPrice {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#putIn,
+#goBasket,
+#goPurchase,
+#goBack {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+/* 알림창 */
+.salesAlert {
+    text-align: center;
+    background: #eeeeee;
+    padding : 35px;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 5px;
+    background: #ffe591;
+}
+
+.salesAlert p {
+    margin-bottom: 0;
+}

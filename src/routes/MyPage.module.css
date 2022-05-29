@@ -1,0 +1,41 @@
+.mypageTitle {
+    text-align: center;
+    margin: 20px;
+    padding: 25px;
+    font-weight: bold;
+}
+
+.orderCheckTitle {
+    padding: 30px;
+    font-weight: bold;
+}
+
+.orderCheckItem {
+    display: flex;
+    color: rgb(78, 76, 76);
+}
+
+.item:hover{
+    color: rgb(24, 23, 23);
+    font-weight: bold;
+}
+
+.myShoppingTitle {
+    padding: 30px;
+    font-weight: bold;
+}
+
+.myShoppingItem {
+    display: flex;
+    color: rgb(78, 76, 76);
+}
+
+.userInfo {
+    padding: 30px; 
+    font-weight: bold;
+}
+
+.userInfoItem {
+    display: flex;
+    color: rgb(78, 76, 76);
+}

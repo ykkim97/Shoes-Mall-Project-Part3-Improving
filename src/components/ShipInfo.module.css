@@ -1,0 +1,31 @@
+.shipInfo-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.exchange-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.table-frame {
+    width: 100%;
+    border: 1px solid rgb(160, 157, 157);
+    height: 300px;
+}
+
+.table-frame tr {
+    border: 1px solid rgb(160, 157, 157);
+}
+
+.table-frame td { 
+    border: 1px solid rgb(160, 157, 157);
+    text-align: left;
+    padding-left: 15px;
+}
+
+.itemKey {
+    background: rgb(236, 233, 233);
+}

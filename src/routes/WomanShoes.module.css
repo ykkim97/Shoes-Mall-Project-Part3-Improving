@@ -1,0 +1,13 @@
+.womanShoesDiv {
+
+}
+
+.title {
+    text-align: center;
+    padding: 50px;
+    font-weight: bold;
+}
+
+#item {
+    cursor: pointer;
+}
