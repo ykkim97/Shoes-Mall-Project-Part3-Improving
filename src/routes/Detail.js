@@ -12,20 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDatabase, onValue, ref, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
 
-// styled-components
-const Btn = styled.button`
-    background : ${ props => props.bg };
-    color : black;
-    padding : 10px;
-    border-radius : 5px
-`
-
-const GreyBox = styled.div`
-    background : grey;
-    padding : 20px;
-    text-align : center;
-`
-
 function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const [tabs, setTabs] = useState(0);
     const [isAlert, setIsAlert] = useState(true);
@@ -40,8 +26,6 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
         dispatch({type : "항목추가", payload : {id : findItem.id, name : findItem.title, quan : 1, price : findItem.price}});
         alert('장바구니에 상품이 담겼습니다.')
     }
-    
-    
 
     // localStorage에 최근 본 상품 ID값 넣기
     useEffect(() => {
@@ -96,13 +80,8 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
         <>
             <MainNavbar isLogged={isLogged} setIsLogged={setIsLogged}/>
 
-            {/*  쿠폰증정 광고창    
-            <GreyBox>
-                <h3>신규 고객 대상 30% 할인 쿠폰 증정</h3>
-                <Btn bg="yellow">쿠폰발급받기</Btn>
-            </GreyBox> */}
-
             <h1 className={styles.detailInfoTitle}>상품 정보</h1>
+
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 detailInfo">
