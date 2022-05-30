@@ -5,6 +5,8 @@ import axios from "axios";
 import popularData from './components/popularData';
 import ScrollToTop from "./components/ScrollToTop";
 import Loading from './components/Loading';
+import Test from './routes/Test';
+import './App.css';
 import Home from './routes/Home';
 const Detail = lazy(() => import("./routes/Detail.js"));
 const Cart = lazy(() => import("./routes/Cart.js"));
@@ -16,9 +18,6 @@ const WomanShoes = lazy(() => import("./routes/WomanShoes.js"));
 const KidsShoes = lazy(() => import("./routes/KidsShoes.js"));
 // import Watched from './routes/Watched';
 const Watched = lazy(() => import("./routes/Watched.js"));
-import Test from './routes/Test';
-import './App.css';
-
 
 function App() {
   const [popularShoes, setPopularShoes] = useState(popularData);

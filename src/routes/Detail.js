@@ -9,6 +9,8 @@ import Footer from "../components/Footer";
 import TabContent from "../components/TabContent";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import { getDatabase, onValue, ref, update } from "firebase/database";
+import { getAuth } from "firebase/auth";
 
 // styled-components
 const Btn = styled.button`
@@ -38,22 +40,50 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
         dispatch({type : "항목추가", payload : {id : findItem.id, name : findItem.title, quan : 1, price : findItem.price}});
         alert('장바구니에 상품이 담겼습니다.')
     }
+    
+    
 
     // localStorage에 최근 본 상품 ID값 넣기
     useEffect(() => {
-        let watchedArray = localStorage.getItem('watched');
+        if(isLogged) {
+            const database = getDatabase();
+            const auth = getAuth();
+            const userId = auth.currentUser.uid;
+            const Ref = ref(database, `users/${userId}/history`);
+            let watchedArray;
 
-        if (watchedArray == null) {
-            watchedArray = []; // localStorage가 비어있을 경우 빈 array로 만듬
-        } else {
-            watchedArray = JSON.parse(watchedArray); // JSON자료를 Array로 변환해서 가져옴
+            onValue(Ref,(snapshot) => {
+                watchedArray = snapshot.val();
+            })
+
+            if (watchedArray == null) {
+                watchedArray = []; // localStorage가 비어있을 경우 빈 array로 만듬
+            }
+
+            watchedArray.unshift(findItem.id); // 가져온 기존 array에 상품 ID값을 푸시
+            watchedArray = new Set(watchedArray); // 상품 ID가 중복되는 것을 막기위해 Set으로 중복 제거
+            watchedArray = [...watchedArray]; // Set자료형에서 다시 Array로 변환
+
+            update(ref(database, `users/` + userId), {
+                history: watchedArray,
+            })
         }
+        else {
+            let watchedArray = localStorage.getItem('watched');
 
-        watchedArray.unshift(findItem.id); // 가져온 기존 array에 상품 ID값을 푸시
-        watchedArray = new Set(watchedArray); // 상품 ID가 중복되는 것을 막기위해 Set으로 중복 제거
-        watchedArray = [...watchedArray]; // Set자료형에서 다시 Array로 변환
+            if (watchedArray == null) {
+                watchedArray = []; // localStorage가 비어있을 경우 빈 array로 만듬
+            } else {
+                watchedArray = JSON.parse(watchedArray); // JSON자료를 Array로 변환해서 가져옴
+            }
 
-        localStorage.setItem('watched', JSON.stringify(watchedArray)) // localStorage에 다시 JSON자료형으로 넣어줌 
+            watchedArray.unshift(findItem.id); // 가져온 기존 array에 상품 ID값을 푸시
+            watchedArray = new Set(watchedArray); // 상품 ID가 중복되는 것을 막기위해 Set으로 중복 제거
+            watchedArray = [...watchedArray]; // Set자료형에서 다시 Array로 변환
+
+            localStorage.setItem('watched', JSON.stringify(watchedArray)) // localStorage에 다시 JSON자료형으로 넣어줌 
+        }
+        
     }, [])
 
     // 품절 임박 메세지 타이머 실행

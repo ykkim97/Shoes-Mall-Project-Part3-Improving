@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
@@ -8,9 +8,11 @@ import styles from "./MainNavbar.module.css";
 //Navbar Part
 function MainNavbar({isLogged, setIsLogged}) {
     // 로그아웃 함수
+    const navigate = useNavigate();
     const signout = async () => {
         await signOut(auth);
         setIsLogged(false)
+        navigate(0);
     }
     return (
         <>

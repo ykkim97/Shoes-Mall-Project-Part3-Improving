@@ -8,4 +8,7 @@
     align-items: center;
     background: linear-gradient(to left, #212529, rgb(61, 61, 61),#212529);
     color: #ffffffc9;
+    height: 183px;
+    position : relative;
+    /* transform : translateY(0%); */
 }
