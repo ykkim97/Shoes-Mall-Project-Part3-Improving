@@ -4,21 +4,10 @@ import styles from "./Watched.module.css";
 import ItemHistory from "../components/ItemHistory";
 import { get, getDatabase, onValue, ref, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
-import { async } from "@firebase/util";
 
 function Watched({popularShoes, isLogged, setIsLogged}) {
     // localstorage에서 가져온 id값을 저장할 state
     const [watchedItemID , setWatchedItemID] = useState([]);
-    
-    // async function get(Ref, storage) {
-    //     await onValue(Ref,(snapshot) => {
-    //         storage = snapshot.val();
-    //         console.log(storage + ' 2')
-    //     })
-    //     return storage;
-    // }
- 
-    
     
     // localstorage에서 가져오는 과정
     useEffect(() => {
@@ -31,10 +20,9 @@ function Watched({popularShoes, isLogged, setIsLogged}) {
             onValue(Ref,(snapshot) => {
                 let storage = snapshot.val();
                 if (storage == null) storage = [];
-                setWatchedItemID([...storage])
+                setWatchedItemID([...storage]);
             })
-        }
-        else {
+        } else {
             let storage = localStorage.getItem('watched');
             if (storage == null) storage = []; // localStorage가 비어있다면 빈 배열로
             else storage = JSON.parse(storage);

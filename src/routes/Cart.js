@@ -1,22 +1,38 @@
 // 장바구니 Page
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainNavbar from "../components/MainNavbar";
 import {Table,Button} from "react-bootstrap";
-import Footer from "../components/Footer";
 import styles from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { getDatabase, onValue, ref } from "firebase/database";
+import { getAuth } from "firebase/auth";
 
 function Cart({isLogged, setIsLogged}) {
     let total = 0;
+    const [cartArray, setCartArray] = useState([]);
 
     const state = useSelector((state) => state.basketReducer);
     const alertState = useSelector((state) => state.basketAlertReducer);
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isLogged) {
+            const database = getDatabase();
+            const auth = getAuth();
+            const userId = auth.currentUser.uid;
+            const cartRef = ref(database, `users/${userId}/cart`);
+
+            onValue(cartRef, (snapshot) => {
+                let cartFromDB = snapshot.val();
+                if (cartFromDB == null) cartFromDB = [];
+                setCartArray([...cartFromDB]);
+            })
+        }
+    }, []);
 
     return (
         <>
@@ -41,7 +57,7 @@ function Cart({isLogged, setIsLogged}) {
                         </tr>
                     </thead>
                     <tbody className={styles.basketTableBody}>
-                        {state.map((item, idx) => {
+                        {(isLogged ? cartArray : state).map((item, idx) => {
                             return (
                                 <tr key={idx}>
                                     <td>{item.id}</td> 

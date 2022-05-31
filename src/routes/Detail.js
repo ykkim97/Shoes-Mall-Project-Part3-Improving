@@ -16,23 +16,65 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const [tabs, setTabs] = useState(0);
     const [isAlert, setIsAlert] = useState(true);
 
-    const navigate = useNavigate();
     let { id } = useParams();
     let findItem = popularShoes.find(item => item.id == id);
-    
+
     const basketState = useSelector(state => state.basketReducer);
     const dispatch = useDispatch();
-    const addBasket = () => {
-        dispatch({type : "항목추가", payload : {id : findItem.id, name : findItem.title, quan : 1, price : findItem.price}});
-        alert('장바구니에 상품이 담겼습니다.')
-    }
+    const navigate = useNavigate();
+    
 
-    // localStorage에 최근 본 상품 ID값 넣기
+    const addBasket = () => {
+        
+        if (isLogged) {
+            const database = getDatabase();
+            const auth = getAuth();
+            const userId = auth.currentUser.uid;
+
+            // 경로 => users/${userId}/cart
+            const cartRef = ref(database, `users/${userId}/cart`);
+
+            // 장바구니에 넣을 Object형식 - cartFormat
+            let cartFormat = {id : findItem.id, name : findItem.title, quan : 1, price : findItem.price};
+            // DB에서 가져온것을 저장할 변수 - cartArray
+            let cartArray;
+            onValue(cartRef, (snapshot) => {
+                cartArray = snapshot.val();
+                console.log(cartArray)
+            })
+            // cartArray가 비어있다면 []로 만들기
+            if (cartArray == null) {
+                cartArray = [];
+            }
+
+            // 장바구니에 동일한 상품이 있는지 확인하기 위한 addFound
+            // 동일한 상품이 있으면 수량을 1 증가하고 상품이 없으면 cartFormat을 넣기
+            let addFound = cartArray.findIndex((item) => item.id === cartFormat.id);
+            if (addFound >= 0) {
+                cartArray[addFound].quan++; 
+            } else {
+                cartArray.push(cartFormat);
+            }
+            // cartArray를 실제 DB에 업데이트 하기
+            update(ref(database, `users/` + userId), {
+                cart: cartArray,
+            })
+            
+        } else {
+            dispatch({type : "항목추가", payload : {id : findItem.id, name : findItem.title, quan : 1, price : findItem.price}});
+        }
+        alert('장바구니에 상품이 담겼습니다.');
+
+    }
+    
+
+    // 최근 본 상품 ID값 넣기
     useEffect(() => {
         if(isLogged) {
             const database = getDatabase();
             const auth = getAuth();
             const userId = auth.currentUser.uid;
+
             const Ref = ref(database, `users/${userId}/history`);
             let watchedArray;
 
