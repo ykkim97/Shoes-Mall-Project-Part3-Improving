@@ -19,6 +19,7 @@ function Cart({isLogged, setIsLogged}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // cartArray에 DB에서 가져온 장바구니 데이터 저장하기
     useEffect(() => {
         if (isLogged) {
             const database = getDatabase();

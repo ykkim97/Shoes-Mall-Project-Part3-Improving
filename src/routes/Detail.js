@@ -23,9 +23,7 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
-
     const addBasket = () => {
-        
         if (isLogged) {
             const database = getDatabase();
             const auth = getAuth();
