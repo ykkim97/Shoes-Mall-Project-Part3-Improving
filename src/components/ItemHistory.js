@@ -32,7 +32,7 @@ function ItemHistory({shoes, idx}) {
                 ? (
                     <div className="col-md-12 populars" onClick={() => {navigate(`/detail/${shoes.id}`)}} id={styles.ItemDiv}>
                         <img 
-                            src={`https://raw.githubusercontent.com/younggwons/younggwons.github.io/master/item/shoes${idx}.jpg`} 
+                            src={`https://firebasestorage.googleapis.com/v0/b/shoes-shoppingmall.appspot.com/o/items%2Fshoes${idx}.jpg?alt=media`} 
                             width="80%" 
                             height="190px"
                             className={styles.img}

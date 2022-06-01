@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { getDatabase, onValue, ref, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
+import { getStorage, getDownloadURL } from "firebase/storage";
 
 function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const [tabs, setTabs] = useState(0);
@@ -22,12 +23,15 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const basketState = useSelector(state => state.basketReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const storage = getStorage();
     
     const addBasket = () => {
         if (isLogged) {
             const database = getDatabase();
             const auth = getAuth();
             const userId = auth.currentUser.uid;
+            
 
             // 경로 => users/${userId}/cart
             const cartRef = ref(database, `users/${userId}/cart`);
@@ -61,10 +65,8 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
             dispatch({type : "항목추가", payload : {id : findItem.id, name : findItem.title, quan : 1, price : findItem.price}});
         }
         alert('장바구니에 상품이 담겼습니다.');
-
     }
     
-
     // 최근 본 상품 ID값 넣기
     useEffect(() => {
         if(isLogged) {
@@ -124,7 +126,7 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 detailInfo">
-                        <img src={`https://raw.githubusercontent.com/younggwons/younggwons.github.io/master/item/shoes${findItem.id}.jpg`} width="100%" />
+                        <img src={`https://firebasestorage.googleapis.com/v0/b/shoes-shoppingmall.appspot.com/o/items%2Fshoes${findItem.id}.jpg?alt=media`} width="100%" />
                     </div>
                     <div className="col-md-12" id={styles.detailInfo}>
                         <h4 className="pt-5">{findItem.title}</h4>

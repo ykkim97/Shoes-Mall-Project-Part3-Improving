@@ -1,6 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { auth } from './firebase';
 import axios from "axios";
 import popularData from './components/popularData';
 import ScrollToTop from "./components/ScrollToTop";
@@ -8,6 +7,7 @@ import Loading from './components/Loading';
 import Test from './routes/Test';
 import './App.css';
 import Home from './routes/Home';
+import { getDatabase, onValue, ref } from "firebase/database";
 const Detail = lazy(() => import("./routes/Detail.js"));
 const Cart = lazy(() => import("./routes/Cart.js"));
 const MyPage = lazy(() => import("./routes/MyPage.js"));
@@ -25,15 +25,18 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [ax, setAx] = useState(false);
 
+
   useEffect(() => {
-        !ax && axios.get(`https://younggwons.github.io/item/anotherItem.json`)
-          .then((result) => {
-              setPopularShoes([...popularShoes, ...result.data]);
-              setAx(true);
-          })
-          .catch(() => {
-              console.log("요청 실패")
-          })
+    if(!ax) {
+      const database = getDatabase();
+      const itemRef = ref(database, `anotherItem`);
+
+      onValue(itemRef, (snapshot) => {
+        let itemFromDB = snapshot.val();
+        setPopularShoes([...popularShoes, ...itemFromDB]);
+        setAx(true);
+      })
+    }
   }, [])
 
   return (
