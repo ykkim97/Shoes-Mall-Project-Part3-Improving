@@ -4,7 +4,6 @@ import axios from "axios";
 import popularData from './components/popularData';
 import ScrollToTop from "./components/ScrollToTop";
 import Loading from './components/Loading';
-import Test from './routes/Test';
 import './App.css';
 import Home from './routes/Home';
 import { getDatabase, onValue, ref } from "firebase/database";
@@ -24,7 +23,6 @@ function App() {
   const [user, setUser] = useState({});
   const [isLogged, setIsLogged] = useState(false);
   const [ax, setAx] = useState(false);
-
 
   useEffect(() => {
     if(!ax) {
@@ -133,13 +131,6 @@ function App() {
                   popularShoes={popularShoes}
                 />
             }></Route>
-
-            {/* DB 테스트용 */}
-            <Route exact path='/test' element={<Test 
-              isLogged={isLogged} 
-              setIsLogged={setIsLogged}
-              popularShoes={popularShoes}
-            />}></Route>
 
             {/* 그 외 404에러 */}
             <Route path='*' element={
