@@ -6,7 +6,7 @@ import {Table,Button} from "react-bootstrap";
 import styles from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { getDatabase, onValue, ref, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
 
 function Cart({isLogged, setIsLogged}) {
@@ -71,17 +71,51 @@ function Cart({isLogged, setIsLogged}) {
                                     <td className={styles.quanChangeBtn}>
                                         <button 
                                             onClick={() => {
-                                                dispatch({type : "수량증가", id : item.id, price : item.price})
+                                                if (isLogged) {
+                                                    const database = getDatabase();
+                                                    const auth = getAuth();
+                                                    const userId = auth.currentUser.uid;
+                                                    item.quan++;
+                                                    update(ref(database, `users/` + userId), {
+                                                        cart: cartArray,
+                                                    })
+                                                } else {
+                                                    dispatch({type : "수량증가", id : item.id, price : item.price})
+                                                }
+                                                
                                             }
                                         }>+</button>
                                         <button 
                                             onClick={() => {
-                                                if (item.quan > 0) dispatch({type : "수량감소", id : item.id});
+                                                if (isLogged) {
+                                                    const database = getDatabase();
+                                                    const auth = getAuth();
+                                                    const userId = auth.currentUser.uid;
+                                                    if (item.quan > 1) item.quan--;
+                                                    update(ref(database, `users/` + userId), {
+                                                        cart: cartArray,
+                                                    })
+                                                } else {
+                                                    if (item.quan > 1) dispatch({type : "수량감소", id : item.id});
+                                                }
                                             }
                                         }>-</button>
                                         <button 
                                             onClick={() => {
-                                                dispatch({type : "항목삭제"});
+                                                if (isLogged) {
+                                                    const database = getDatabase();
+                                                    const auth = getAuth();
+                                                    const userId = auth.currentUser.uid;
+                                                    
+                                                    let deleteFound = cartArray.findIndex((items) => items.id === item.id);
+                                                    cartArray.splice(deleteFound, 1);
+
+                                                    update(ref(database, `users/` + userId), {
+                                                        cart: cartArray,
+                                                    })
+                                                } else {
+                                                    dispatch({type : "항목삭제", id : item.id});
+                                                }
                                                 alert('상품이 삭제되었습니다.')
                                             }
                                         }>X</button>
@@ -107,10 +141,10 @@ function Cart({isLogged, setIsLogged}) {
                 {/* 총 결제 금액 보여주기 */}
                 <div className={styles.totalAmount}>
                     <p>총 결제 금액 : 
-                        {state.map(item => {
+                        {(isLogged ? cartArray : state).map(item => {
                             total += (item.price * item.quan);
                             return total;
-                        })[state.length - 1]} 원
+                        })[(isLogged ? cartArray : state).length - 1]} 원
                     </p>
                 </div>
 

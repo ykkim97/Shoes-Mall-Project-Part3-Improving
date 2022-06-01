@@ -38,7 +38,6 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
             let cartArray;
             onValue(cartRef, (snapshot) => {
                 cartArray = snapshot.val();
-                console.log(cartArray)
             })
             // cartArray가 비어있다면 []로 만들기
             if (cartArray == null) {

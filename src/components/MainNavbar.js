@@ -10,6 +10,7 @@ function MainNavbar({isLogged, setIsLogged}) {
     // 로그아웃 함수
     const navigate = useNavigate();
     const signout = async () => {
+        localStorage.clear()
         await signOut(auth);
         setIsLogged(false)
         navigate(0);

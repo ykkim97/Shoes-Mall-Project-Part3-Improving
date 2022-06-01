@@ -36,7 +36,8 @@ const basketReducer = (state = basketItemInfo,action) => {
 
     case "항목삭제" : 
       let deleteBasket = [...state];
-      deleteBasket.pop(action.payload);
+      let deleteFound = state.findIndex((item) => item.id === action.id);
+      deleteBasket.splice(deleteFound, 1);
       return deleteBasket;
 
     case "수량증가" :
