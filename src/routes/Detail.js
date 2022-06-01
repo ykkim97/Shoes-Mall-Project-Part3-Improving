@@ -7,11 +7,9 @@ import styles from "./Detail.module.css"
 import { Nav } from "react-bootstrap";
 import Footer from "../components/Footer";
 import TabContent from "../components/TabContent";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { getDatabase, onValue, ref, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
-import { getStorage, getDownloadURL } from "firebase/storage";
 
 function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const [tabs, setTabs] = useState(0);
@@ -23,8 +21,6 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const basketState = useSelector(state => state.basketReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const storage = getStorage();
     
     const addBasket = () => {
         if (isLogged) {
