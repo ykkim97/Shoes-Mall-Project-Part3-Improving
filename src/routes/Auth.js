@@ -35,17 +35,13 @@ function Auth({user, setUser, isLogged, setIsLogged}) {
             );
             // 로그인 성공시 true로
             setIsLogged(true);
+            console.log(auth, ' auth');
             
         } catch (error) {
             console.log(error.message);
             alert("이메일 혹은 비밀번호가 틀립니다.");
         }
     }
-    // // 로그아웃 함수
-    // const signout = async () => {
-    //     await signOut(auth);
-    //     setIsLogged(false)
-    // }
 
     return (
         <>
