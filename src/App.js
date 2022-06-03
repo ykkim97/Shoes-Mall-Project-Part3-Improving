@@ -24,6 +24,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [ax, setAx] = useState(false);
 
+  // DB에서 데이터 불러오기
   useEffect(() => {
     if(!ax) {
       const database = getDatabase();
@@ -41,7 +42,7 @@ function App() {
     <div className="App">
       <Router>
         <ScrollToTop />
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<Loading />}> 
           <Routes>
             {/* 메인 페이지 */}
             <Route exact path='/' element={
@@ -132,7 +133,7 @@ function App() {
                 />
             }></Route>
 
-            {/* 그 외 404에러 */}
+            {/* 404에러 */}
             <Route path='*' element={
               <div>
                 <img src='/img/404error.jpg'></img>
