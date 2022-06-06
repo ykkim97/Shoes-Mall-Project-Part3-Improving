@@ -7,6 +7,8 @@ import Loading from './components/Loading';
 import './App.css';
 import Home from './routes/Home';
 import { getDatabase, onValue, ref } from "firebase/database";
+import { auth } from './firebase';
+import { onAuthStateChanged,signInWithEmailAndPassword } from 'firebase/auth';
 const Detail = lazy(() => import("./routes/Detail.js"));
 const Cart = lazy(() => import("./routes/Cart.js"));
 const MyPage = lazy(() => import("./routes/MyPage.js"));
@@ -37,6 +39,22 @@ function App() {
       })
     }
   }, [])
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // const loginInfo = JSON.parse(sessionStorage.getItem("loginInfo"));
+        // const [userId, userPassword] = Object.values(loginInfo);
+        // const user = signInWithEmailAndPassword(
+        //   auth,
+        //   userId,
+        //   userPassword
+        // );
+        setIsLogged(true)
+      }
+    })
+  }, [])
+
 
   return (
     <div className="App">

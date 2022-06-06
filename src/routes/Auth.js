@@ -35,7 +35,7 @@ function Auth({user, setUser, isLogged, setIsLogged}) {
             );
             // 로그인 성공시 true로
             setIsLogged(true);
-            console.log(auth, ' auth');
+            // sessionStorage.setItem("loginInfo",JSON.stringify({userId : loginEmail, userPassword : loginPassword}));
             
         } catch (error) {
             console.log(error.message);
