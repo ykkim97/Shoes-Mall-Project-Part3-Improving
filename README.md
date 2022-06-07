@@ -25,14 +25,19 @@
 
 <img src="https://user-images.githubusercontent.com/17917009/172348473-aa38d095-a6f5-4629-ab7d-d0fc6910b5fd.gif" style="text-align : center">
 로그인 버튼을 클릭하면 로그인페이지로 이동하여 이메일과 비밀번호를 입력하고 로그인할 수 있습니다.
+<br>
 <img src="https://user-images.githubusercontent.com/17917009/172355484-ffb829b8-b271-49b3-a31a-9a15579f64f6.gif" style="text-align : center">
 계정 정보가 맞지 않을 경우 사용자에게 알림을 보냅니다. 
+<br>
 <img src="https://user-images.githubusercontent.com/17917009/172357157-22bc66c3-c1e2-4b92-9e60-3fd85d67f412.gif" style="text-align : center">
 회원가입버튼을 클릭하여 회원가입을 진행할 수 있습니다.
+<br>
 <img src="https://user-images.githubusercontent.com/17917009/172358151-f9ef682b-31ab-4644-a33b-6bdfbc61a613.JPG" style="text-align : center">
 회원가입이 완료된 사용자 정보를 Firebase Authentication 탭에서 확인할 수 있습니다.
+<br>
 <img src="https://user-images.githubusercontent.com/17917009/172359444-2d94cfb7-c37d-4fab-b374-b06bbeef09a6.png" style="text-align : center">
 회원가입이 정상적으로 완료되면 데이터베이스에 사용자 UID가 추가되고 하위에 이메일정보가 추가됩니다.
+<br>
 
 ### 스토리지 및 데이터베이스 연동
 
