@@ -23,7 +23,7 @@
 ### 로그인/로그아웃/회원가입
 페이지에서 로그인 버튼을 눌러 로그인을 시도할 수 있습니다. 
 
-<img src="https://user-images.githubusercontent.com/17917009/172348473-aa38d095-a6f5-4629-ab7d-d0fc6910b5fd.gif" style="text-align : center">
+<img src="https://user-images.githubusercontent.com/17917009/172348473-aa38d095-a6f5-4629-ab7d-d0fc6910b5fd.gif" style="width : 100%">
 로그인 버튼을 클릭하면 로그인페이지로 이동하여 이메일과 비밀번호를 입력하고 로그인할 수 있습니다.  
 <br/>
 <img src="https://user-images.githubusercontent.com/17917009/172355484-ffb829b8-b271-49b3-a31a-9a15579f64f6.gif" style="text-align : center">
