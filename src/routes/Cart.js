@@ -8,10 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getDatabase, onValue, ref, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
+import Payment from "../components/Payment";
 
 function Cart({isLogged, setIsLogged}) {
     let total = 0;
     const [cartArray, setCartArray] = useState([]);
+    const [modalOn, setModalOn] = useState(false);
 
     const state = useSelector((state) => state.basketReducer);
     const alertState = useSelector((state) => state.basketAlertReducer);
@@ -34,6 +36,11 @@ function Cart({isLogged, setIsLogged}) {
             })
         }
     }, []);
+
+    // Modal
+    const onOpenModal = () => {
+        setModalOn(!modalOn);
+    }
 
     return (
         <>
@@ -150,7 +157,8 @@ function Cart({isLogged, setIsLogged}) {
 
                 {/* 결제하기, 뒤로가기 버튼 */}
                 <div className={styles.payment}>
-                    <Button className={styles.goPaymentBtn}>결제하기</Button>
+                    <Button className={styles.goPaymentBtn} onClick={onOpenModal}>결제하기</Button>
+                    {modalOn ? <Payment onOpenModal={onOpenModal}/> : ''}
                     <Button className={styles.goBackBtn} onClick={() => {navigate(-1)}}>뒤로가기</Button>
                 </div>
             </div>

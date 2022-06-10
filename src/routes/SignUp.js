@@ -25,7 +25,8 @@ function SignUp () {
             set(ref(database, `users/` + userId), {
                 email: registerEmail,
             })
-            console.log(userId)
+            console.log(userId);
+            alert("회원가입이 완료되었습니다!");
             navigate(-1);
 
         } catch (error) {
