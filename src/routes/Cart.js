@@ -14,6 +14,8 @@ function Cart({isLogged, setIsLogged}) {
     let total = 0;
     const [cartArray, setCartArray] = useState([]);
     const [modalOn, setModalOn] = useState(false);
+    // 결제모달창의 입금액을 표시하기 위해 총 결제금액을 저장할 변수 modalTotal
+    let modalTotal = [];
 
     const state = useSelector((state) => state.basketReducer);
     const alertState = useSelector((state) => state.basketAlertReducer);
@@ -150,6 +152,7 @@ function Cart({isLogged, setIsLogged}) {
                     <p>총 결제 금액 : 
                         {(isLogged ? cartArray : state).map(item => {
                             total += (item.price * item.quan);
+                            modalTotal.push(total);
                             return total;
                         })[(isLogged ? cartArray : state).length - 1]} 원
                     </p>
@@ -158,7 +161,12 @@ function Cart({isLogged, setIsLogged}) {
                 {/* 결제하기, 뒤로가기 버튼 */}
                 <div className={styles.payment}>
                     <Button className={styles.goPaymentBtn} onClick={onOpenModal}>결제하기</Button>
-                    {modalOn ? <Payment onOpenModal={onOpenModal}/> : ''}
+                    {modalOn ? 
+                        <Payment 
+                            onOpenModal={onOpenModal}
+                            modalTotal={modalTotal}
+                        /> : ''
+                    }
                     <Button className={styles.goBackBtn} onClick={() => {navigate(-1)}}>뒤로가기</Button>
                 </div>
             </div>

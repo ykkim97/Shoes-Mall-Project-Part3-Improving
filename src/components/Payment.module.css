@@ -25,8 +25,22 @@
 
 #title {
     font-size: 25px;
-
 }
+
+#total {
+    color: rgb(224, 101, 19);
+    margin-left: 10px;
+}
+
+#payment-info {
+    font-weight: 500;
+}
+
+.modalBox h4 {
+    display: flex;
+    justify-content: center;
+}
+
 
 .modalBox .closeBtn {
     display: block;
