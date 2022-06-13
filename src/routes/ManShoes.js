@@ -26,9 +26,9 @@ function ManShoes({popularShoes, isLogged, setIsLogged, ax}) {
                         })}
                     </div>
                 </div>
-                <Footer />
+                
             </div>
-            
+            <Footer />
         </>
     )
 }

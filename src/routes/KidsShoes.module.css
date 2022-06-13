@@ -1,5 +1,6 @@
 .kidsShoesDiv {
     padding-bottom: 83px;
+    min-height: calc(100vh - 183px);
 }
 
 .title {
