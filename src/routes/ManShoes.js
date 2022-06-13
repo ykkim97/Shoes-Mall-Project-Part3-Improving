@@ -15,7 +15,7 @@ function ManShoes({popularShoes, isLogged, setIsLogged, ax}) {
                 <MainNavbar isLogged={isLogged} setIsLogged={setIsLogged}/>
                 <h3 className={styles.title}>남성신발 ({count}개의 상품)</h3>
                 <div className="container">
-                    <div className="row" id={styles["item"]}>
+                    <div className={styles["row"]} id={styles["item"]}>
                         {ax && popularShoes.map((shoes, idx) => {
                             if(shoes.classify == "man") {
                                 count[0] += 1;

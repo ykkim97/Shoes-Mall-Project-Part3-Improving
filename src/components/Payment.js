@@ -16,7 +16,7 @@ function Payment({onOpenModal, modalTotal}) {
                     <p>예금주 : CAFESHOE</p>
                     <p>입금액 : {modalTotal[modalTotal.length - 1]}원</p>
                     <p>3일 이내로 입금하지 않을 경우 결제가 취소됩니다.</p>
-                    <Button className={styles["closeBtn"]} onClick={onOpenModal}>취소하기</Button>
+                    <Button className={styles["closeBtn"]} onClick={onOpenModal}>확인</Button>
                 </div>
             </div>
         </div>
