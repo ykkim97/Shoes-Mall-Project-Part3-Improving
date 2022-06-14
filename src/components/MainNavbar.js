@@ -17,7 +17,8 @@ function MainNavbar({isLogged, setIsLogged}) {
     }
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className={styles.NavbarDiv}>
+            <Navbar collapseOnSelect expand="lg" bg="light" className={styles.NavbarDiv}>
+                {/* variant="dark" */}
                 <Container>
                 <Navbar.Brand as={Link} to="/" className={styles.brand}>카페슈</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
