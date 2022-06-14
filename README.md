@@ -7,7 +7,7 @@
 2명
 
 ## 프로젝트 개요 및 동기
-앞서 제작했던 신발판매 쇼핑몰(https://github.com/ykkim97/Shoes-ShoppingMall-Project)을 가지고 주변 사람들에게 부족한 부분이나 추가했으면 하는 기능, 불편한 점들에 대해서 피드백을 받고 개선하는 작업을 진행합니다.
+앞서 제작했던 신발판매 쇼핑몰(https://github.com/ykkim97/Shoes-ShoppingMall-Project) 을 가지고 주변 사람들에게 부족한 부분이나 추가했으면 하는 기능, 불편한 점들에 대해서 피드백을 받고 개선하는 작업을 진행합니다.
 
 ## 기술 스택
 
