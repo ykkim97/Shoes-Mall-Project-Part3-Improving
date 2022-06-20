@@ -10,10 +10,14 @@ import TabContent from "../components/TabContent";
 import { useDispatch, useSelector } from "react-redux";
 import { getDatabase, onValue, ref, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
+import AddBasketModal from "../components/AddBasketModal";
 
 function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const [tabs, setTabs] = useState(0);
     const [isAlert, setIsAlert] = useState(true);
+
+    // 장바구니 클릭 Modal Switch
+    const [addBasketModalOn, setAddBasketModalOn] = useState(false);
 
     let { id } = useParams();
     let findItem = popularShoes.find(item => item.id == id);
@@ -21,6 +25,10 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const basketState = useSelector(state => state.basketReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
+    const onOpenModal = () => {
+        setAddBasketModalOn(!addBasketModalOn)
+    }
     
     const addBasket = () => {
         if (isLogged) {
@@ -60,7 +68,7 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
         } else {
             dispatch({type : "항목추가", payload : {id : findItem.id, name : findItem.title, quan : 1, price : findItem.price}});
         }
-        alert('장바구니에 상품이 담겼습니다.');
+        onOpenModal();
     }
     
     // 최근 본 상품 ID값 넣기
@@ -132,6 +140,12 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
                         <button className="btn btn-primary" id={styles.putIn}
                             onClick={addBasket}
                         >장바구니담기</button>
+
+                        {/* 장바구니담기 클릭 시 Modal창 띄우기 */}
+                        {
+                            addBasketModalOn ? <AddBasketModal onOpenModal={onOpenModal}/> : null
+                        }
+
                         <button className="btn btn-primary" id={styles.goBasket}
                             onClick={() => navigate('/cart')}
                         >장바구니로</button>
@@ -163,8 +177,8 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
                 
                 <TabContent tabs={tabs} />
             </div> 
-
             <Footer />
+            
         </>
     )
 }
