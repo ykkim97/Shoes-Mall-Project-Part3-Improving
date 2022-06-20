@@ -177,7 +177,7 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
                 
                 <TabContent tabs={tabs} />
             </div> 
-            <Footer />
+            <Footer addBasketModalOn={addBasketModalOn}/>
             
         </>
     )

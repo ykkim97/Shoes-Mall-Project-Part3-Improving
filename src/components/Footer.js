@@ -3,15 +3,31 @@ import styles from "./Footer.module.css";
 
 
 // Footer Part
-function Footer() {
+function Footer({addBasketModalOn}) {
     return (
-        <div className={styles.footer}>
-            <div className="footer-info">
-                <h3>카페슈 CafeShoe</h3>
-                <p>© younggwon Kim</p>
-                <p>Email : 97ykkim@naver.com</p>
-            </div>
-        </div>
+        <>
+            {
+                addBasketModalOn ? (
+                    <div className={styles.footer2}>
+                        <div className="footer-info">
+                            <h3>카페슈 CafeShoe</h3>
+                            <p>© younggwon Kim</p>
+                            <p>Email : 97ykkim@naver.com</p>
+                        </div>
+                    </div>
+                ) : (
+                    <div className={styles.footer}>
+                        <div className="footer-info">
+                            <h3>카페슈 CafeShoe</h3>
+                            <p>© younggwon Kim</p>
+                            <p>Email : 97ykkim@naver.com</p>
+                        </div>
+                    </div>
+                )
+            }
+        </>
+        
+        
     )
 }
 
