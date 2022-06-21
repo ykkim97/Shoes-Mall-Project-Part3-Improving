@@ -78,7 +78,7 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     }
 
     const addItemCount = () => {
-        setItemCount(itemCount+1)
+        setItemCount(parseInt(itemCount)+1)
     }
 
     const minusItemCount = () => {
@@ -152,6 +152,7 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
                         <p id={styles.detailPrice}>판매가 : {findItem.price}원</p>
 
                         <div className={styles.menu}>
+
                             {/* 수량 */}
                             <div className={styles.countDiv}>
                                 <input type="text" value={itemCount} onChange={onChange} id={styles.itemCount}></input>
