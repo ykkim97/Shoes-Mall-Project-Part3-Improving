@@ -15,6 +15,7 @@ import AddBasketModal from "../components/AddBasketModal";
 function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
     const [tabs, setTabs] = useState(0);
     const [isAlert, setIsAlert] = useState(true);
+    const [itemCount, setItemCount] = useState(1);
 
     // 장바구니 클릭 Modal Switch
     const [addBasketModalOn, setAddBasketModalOn] = useState(false);
@@ -41,7 +42,7 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
             const cartRef = ref(database, `users/${userId}/cart`);
 
             // 장바구니에 넣을 Object형식 - cartFormat
-            let cartFormat = {id : findItem.id, name : findItem.title, quan : 1, price : findItem.price};
+            let cartFormat = {id : findItem.id, name : findItem.title, quan : itemCount, price : findItem.price};
             // DB에서 가져온것을 저장할 변수 - cartArray
             let cartArray;
             onValue(cartRef, (snapshot) => {
@@ -56,7 +57,7 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
             // 동일한 상품이 있으면 수량을 1 증가하고 상품이 없으면 cartFormat을 넣기
             let addFound = cartArray.findIndex((item) => item.id === cartFormat.id);
             if (addFound >= 0) {
-                cartArray[addFound].quan++; 
+                cartArray[addFound].quan = parseInt(cartArray[addFound].quan) + parseInt(itemCount); 
             } else {
                 cartArray.push(cartFormat);
             }
@@ -66,9 +67,22 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
             })
             
         } else {
-            dispatch({type : "항목추가", payload : {id : findItem.id, name : findItem.title, quan : 1, price : findItem.price}});
+            dispatch({type : "항목추가", payload : {id : findItem.id, name : findItem.title, quan : itemCount, price : findItem.price}});
         }
         onOpenModal();
+    }
+
+    const onChange = (e) => {
+        setItemCount(e.target.value);
+        console.log(itemCount)
+    }
+
+    const addItemCount = () => {
+        setItemCount(itemCount+1)
+    }
+
+    const minusItemCount = () => {
+        if (itemCount > 1) setItemCount(itemCount-1)
     }
     
     // 최근 본 상품 ID값 넣기
@@ -137,20 +151,29 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
                         <p>{findItem.content}</p>
                         <p id={styles.detailPrice}>판매가 : {findItem.price}원</p>
 
-                        <button className="btn btn-primary" id={styles.putIn}
-                            onClick={addBasket}
-                        >장바구니담기</button>
+                        <div className={styles.menu}>
+                            {/* 수량 */}
+                            <div className={styles.countDiv}>
+                                <input type="text" value={itemCount} onChange={onChange} id={styles.itemCount}></input>
+                                <button onClick={addItemCount} id={styles.plusBtn}>+</button>
+                                <button onClick={minusItemCount} id={styles.minusBtn}>-</button>
+                            </div>
 
-                        {/* 장바구니담기 클릭 시 Modal창 띄우기 */}
-                        {
-                            addBasketModalOn ? <AddBasketModal onOpenModal={onOpenModal}/> : null
-                        }
+                            <button className="btn btn-primary" id={styles.putIn}
+                                onClick={addBasket}
+                            >장바구니담기</button>
 
-                        <button className="btn btn-primary" id={styles.goBasket}
-                            onClick={() => navigate('/cart')}
-                        >장바구니로</button>
-                        <button className="btn btn-success" id={styles.goPurchase}>바로구매</button> 
-                        <button className="btn btn-danger" id={styles.goBack} onClick={() => navigate(-1)}>뒤로가기</button> 
+                            {/* 장바구니담기 클릭 시 Modal창 띄우기 */}
+                            {
+                                addBasketModalOn ? <AddBasketModal onOpenModal={onOpenModal}/> : null
+                            }
+
+                            <button className="btn btn-primary" id={styles.goBasket}
+                                onClick={() => navigate('/cart')}
+                            >장바구니로</button>
+                            <button className="btn btn-success" id={styles.goPurchase}>바로구매</button> 
+                            <button className="btn btn-danger" id={styles.goBack} onClick={() => navigate(-1)}>뒤로가기</button> 
+                        </div>
                     </div>
                 </div>
 

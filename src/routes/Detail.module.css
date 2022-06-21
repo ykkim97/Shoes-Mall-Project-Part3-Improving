@@ -13,6 +13,29 @@
     font-size: 20px;
 }
 
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countDiv {
+    margin-right: 20px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+#itemCount {
+    width: 50px;
+    text-align: center;
+}
+
+#plusBtn,
+#minusBtn {
+    width: 30px;
+    font-size: 16px;
+}
+
 #putIn,
 #goBasket,
 #goPurchase,

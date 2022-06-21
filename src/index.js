@@ -28,7 +28,7 @@ const basketReducer = (state = basketItemInfo,action) => {
       let addBasket = [...state];
       let addFound = state.findIndex((item) => item.id === action.payload.id);
       if (addFound >= 0) {
-        addBasket[addFound].quan++;
+        addBasket[addFound].quan =  parseInt(addBasket[addFound].quan) + parseInt(action.payload.quan);
       } else {
         addBasket.push(action.payload);
       }
