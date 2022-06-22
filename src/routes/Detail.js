@@ -191,9 +191,6 @@ function Detail({popularShoes,setPopularShoes,isLogged,setIsLogged}) {
                     <Nav.Item>
                         <Nav.Link eventKey="link-0" onClick={() => {setTabs(0)}}>상품상세</Nav.Link>
                     </Nav.Item>
-                    {/* <Nav.Item>
-                        <Nav.Link eventKey="link-1" onClick={() => {setTabs(1)}}>상품평</Nav.Link>
-                    </Nav.Item> */}
                     <Nav.Item>
                         <Nav.Link eventKey="link-1" onClick={() => {setTabs(1)}}>배송/교환/반품 안내</Nav.Link>
                     </Nav.Item>
