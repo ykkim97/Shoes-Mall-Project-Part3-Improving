@@ -8,7 +8,7 @@
 
 ## 개선한 점
 - 폰트 변경  
-<img src="https://user-images.githubusercontent.com/17917009/174817209-71bac830-7f92-49f8-922e-53cd1f3af854.png" width="1012" height="100"/>
+<!-- <img src="https://user-images.githubusercontent.com/17917009/174817209-71bac830-7f92-49f8-922e-53cd1f3af854.png" width="1012" height="100"/> -->
 본고딕체로 폰트를 변경하였습니다.  
 
 - 상세페이지에서도 수량을 결정할 수 있도록 변경  
