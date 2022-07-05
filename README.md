@@ -8,17 +8,17 @@
 
 ## 개선한 점
 - 폰트 변경  
-![image](https://user-images.githubusercontent.com/17917009/174817209-71bac830-7f92-49f8-922e-53cd1f3af854.png)  
+<img src="https://user-images.githubusercontent.com/17917009/174817209-71bac830-7f92-49f8-922e-53cd1f3af854.png" width="200" height="400"/>
 본고딕체로 폰트를 변경하였습니다.
 
 - 상세페이지에서도 수량을 결정할 수 있도록 변경  
-![상세페이지 UI](https://user-images.githubusercontent.com/17917009/177342317-b389a354-d2df-4322-8850-06390114c061.JPG)
-![상세페이지 UI - 장바구니Modal](https://user-images.githubusercontent.com/17917009/177342818-2e5dc021-d950-4be4-8594-a84807ac64eb.JPG)
+<img src="https://user-images.githubusercontent.com/17917009/177342317-b389a354-d2df-4322-8850-06390114c061.JPG" width="200" height="400"/>
+<img src="https://user-images.githubusercontent.com/17917009/177342818-2e5dc021-d950-4be4-8594-a84807ac64eb.JPG" width="200" height="400"/>
 이전에는 장바구니페이지에서 수량을 따로 변경해주어야했던 불편함이 있었습니다. 따라서 상품 상세페이지에서도 수량을 결정할 수 있도록 개선하였습니다.
 또한 이전버전과는 다르게 UI를 간소화하고 사용하기 편하도록 변경하였습니다.
 
-- 모바일버전
-![모바일버전-모음](https://user-images.githubusercontent.com/17917009/177345352-f6d37450-7546-4fec-8cbc-9dfb564b5384.JPG)
+- 모바일버전  
+<img src="https://user-images.githubusercontent.com/17917009/177345352-f6d37450-7546-4fec-8cbc-9dfb564b5384.JPG" width="200" height="400"/>
 모바일버전에 맞게 UI 사이즈, 배치를 조정하였습니다.
 
 ## 추가 사항
