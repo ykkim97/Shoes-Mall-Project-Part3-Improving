@@ -22,6 +22,8 @@
 모바일버전에 맞게 UI 사이즈, 배치를 조정하였습니다.
 <hr />
 
+Source Code : https://github.com/ykkim97/Shoes-Mall-Project-PWA
+
 ## 추가 사항
 - 본 프로젝트는 상업적으로 사용되지 않습니다.
 - 본 프로젝트에서 사용된 이미지는 저작권이 없는 이미지를 사용하였습니다.
